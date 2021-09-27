@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@300&display=swap');
+
+
+#informe tr:nth-child(even){background-color: #f2f2f2;}
+
+#informe tr:hover {background-color: #ddd;}
+
+</style>
+<html>
+    <body style="font-family: 'Urbanist', sans-serif;">
+        <div id="titulo">
+            <img style="display: inline-block" src=""cid:{0}""/>
+            <span>
+                <h1 style="display: inline-block"> TrashCleaner</h1>
+            </span>
+        </div>
+        <h2>Informe de ejecuci&oacute;n @MachineName - @DateTime</h2>
+        <br>
+        <div>
+            <table id="informe" style="border-collapse: collapse; width: 100%;">
+                <tr class="titulos">
+                    <th rowspan="2" style=" border: 1px solid #ffffff;
+                                            padding: 8px;
+                                            font-weight: 700;
+                                            padding-top: 12px;
+                                            padding-bottom: 12px;
+                                            text-align: center;
+                                            background-color: #ffbb00a4;
+                                            color: #463300;">
+                        Unidad
+                    </th>
+                    <th rowspan="2" style=" border: 1px solid #ffffff;
+                                            padding: 8px;
+                                            font-weight: 700;
+                                            padding-top: 12px;
+                                            padding-bottom: 12px;
+                                            text-align: center;
+                                            background-color: #ffbb00a4;
+                                            color: #463300;">
+                        Espacio total
+                    </th>
+                    <th colspan="2" style=" border: 1px solid #ffffff;
+                                            padding: 8px;
+                                            font-weight: 700;
+                                            padding-top: 12px;
+                                            padding-bottom: 12px;
+                                            text-align: center;
+                                            background-color: #ffbb00a4;
+                                            color: #463300;">
+                        Espacio ocupado
+                    </th>
+                    <th colspan="2" style=" border: 1px solid #ffffff;
+                                            padding: 8px;
+                                            font-weight: 700;
+                                            padding-top: 12px;
+                                            padding-bottom: 12px;
+                                            text-align: center;
+                                            background-color: #ffbb00a4;
+                                            color: #463300;">
+                        Espacio disponible
+                    </th>
+                    <th rowspan="2" style=" border: 1px solid #ffffff;
+                                            padding: 8px;
+                                            font-weight: 700;
+                                            padding-top: 12px;
+                                            padding-bottom: 12px;
+                                            text-align: center;
+                                            background-color: #ffbb00a4;
+                                            color: #463300;">
+                        Espacio liberado
+                    </th>
+                </tr>
+                <tr class="titulos">
+                    <th style=" border: 1px solid #ffffff;
+                                            padding: 8px;
+                                            font-weight: 700;
+                                            padding-top: 12px;
+                                            padding-bottom: 12px;
+                                            text-align: center;
+                                            background-color: #ffbb00a4;
+                                            color: #463300;">
+                        Antes
+                    </th>
+                    <th style=" border: 1px solid #ffffff;
+                                            padding: 8px;
+                                            font-weight: 700;
+                                            padding-top: 12px;
+                                            padding-bottom: 12px;
+                                            text-align: center;
+                                            background-color: #ffbb00a4;
+                                            color: #463300;">
+                        Despu&eacute;s
+                    </th>
+                    <th style=" border: 1px solid #ffffff;
+                                            padding: 8px;
+                                            font-weight: 700;
+                                            padding-top: 12px;
+                                            padding-bottom: 12px;
+                                            text-align: center;
+                                            background-color: #ffbb00a4;
+                                            color: #463300;">
+                        Antes
+                    </th>
+                    <th style=" border: 1px solid #ffffff;
+                                            padding: 8px;
+                                            font-weight: 700;
+                                            padding-top: 12px;
+                                            padding-bottom: 12px;
+                                            text-align: center;
+                                            background-color: #ffbb00a4;
+                                            color: #463300;">
+                        Despu&eacute;s
+                    </th>
+                </tr>
+                @TableContent
+            </table>
+            <h3>Limpieza de temporales de Windows</h3>
+            <p>@StatusWindowsTemp</p>
+            <h3>Limpieza de archivos temporales de Internet Explorer</h3>
+            <p>@StatusIETemp</p>
+            <h3>Limpieza cache de Google Chrome</h3>
+            <p>@StatusChromeTemp</p>
+            <h3>Vaciado de papelera de reciclaje</h3>
+            <p>@StatusRecycleBin</p>
+        </div>
+        <div>
+            
+        </div>
+    </body>
+</html>
