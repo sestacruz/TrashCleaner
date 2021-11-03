@@ -22,7 +22,7 @@ namespace TrashCleaner.OperativeSystem
         public static CleanInfo Clear()
         {
             var model = new CleanInfo();
-            DriveInfo[] allDrives = DriveInfo.GetDrives();
+            List<DriveInfo> allDrives = DriveInfo.GetDrives().Where(x=>x.IsReady).ToList();
             long recycleBinSize = 0,
                  recycleBinFiles = 0;
             foreach (var drive in allDrives)

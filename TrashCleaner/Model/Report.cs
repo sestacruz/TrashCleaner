@@ -78,6 +78,7 @@ namespace TrashCleaner
             string htmlReport = File.ReadAllText(@".\Mail\Template\Template.html");
             htmlReport = htmlReport.Replace("@MachineName", Environment.MachineName);
             htmlReport = htmlReport.Replace("@DateTime", DateTime.Now.ToString("dd/MM/yyyy"));
+            htmlReport = htmlReport.Replace("@TimePowerOn", OperativeSystem.TimePowerOn.GetTimePowerOn());
             foreach (var item in cleanInfo)
                 htmlReport = htmlReport.Replace(item.description, item.ToReportString());
             htmlReport = htmlReport.Replace("@TableContent", GetDiskInfoTable());

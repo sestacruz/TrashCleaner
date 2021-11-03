@@ -13,34 +13,25 @@ namespace TrashCleaner
 
         public static List<Report.Disk> GetDisks()
         {
-            var driveInfo = DriveInfo.GetDrives();
-            var disksInfo = new List<Report.Disk>();
-            for (int i = 0; i < driveInfo.Length; i++)
+            var driveInfo = DriveInfo.GetDrives().Where(x => x.IsReady).ToList();
+            var disksInfo = driveInfo.Select(x => new Report.Disk
             {
-                Report.Disk disk = new Report.Disk
-                {
-                    label = $"{driveInfo[i].VolumeLabel} ({driveInfo[i].Name})",
-                    totalSpace = driveInfo[i].TotalSize,
-                    freeSpace = driveInfo[i].TotalFreeSpace,
-                    occupedSpace = driveInfo[i].TotalSize - driveInfo[i].TotalFreeSpace
-                };
-                disksInfo.Add(disk);
-            }
+                freeSpace = x.TotalFreeSpace,
+                label = $"{x.VolumeLabel} ({x})",
+                occupedSpace = x.TotalSize - x.TotalFreeSpace,
+                totalSpace = x.TotalSize 
+            }).ToList();
             return disksInfo;
         }
 
         public static void SetFreeSpace()
         {
-            var driveInfo = DriveInfo.GetDrives();
-            for (int i = 0; i < driveInfo.Length; i++)
-            {
-                origFreeSpace.Add(driveInfo[i].TotalFreeSpace);
-            }
+            origFreeSpace.AddRange(DriveInfo.GetDrives().Where(x => x.IsReady).Select(x => x.TotalFreeSpace));
         }
         public static string PrintDrivesData()
         {
             string print = "-------------------------------------------" + Environment.NewLine;
-            foreach (var drive in DriveInfo.GetDrives())
+            foreach (var drive in DriveInfo.GetDrives().Where(x => x.IsReady).ToList())
             {
                 print += $"\tUnidad {drive.Name} ({drive.VolumeLabel})" + Environment.NewLine +
                          $"\tEspacio total:      {CleanInfo.stringSize(drive.TotalSize)}" + Environment.NewLine +
@@ -51,9 +42,9 @@ namespace TrashCleaner
         }
         public static string PrintDrivesStat()
         {
-            DriveInfo[] newDriveInfo = DriveInfo.GetDrives();
+            List<DriveInfo> newDriveInfo = DriveInfo.GetDrives().Where(x => x.IsReady).ToList();
             string print = Environment.NewLine;
-            for (int i = 0; i < newDriveInfo.Length; i++)
+            for (int i = 0; i < newDriveInfo.Count; i++)
             {
                 long originalFreeSpace = origFreeSpace[i];
                 long newFreeSpace = newDriveInfo[i].TotalFreeSpace;
