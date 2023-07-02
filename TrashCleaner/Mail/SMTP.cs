@@ -9,11 +9,11 @@ namespace TrashCleaner.Mail
 {
     public class SMTP
     {
-        private static string _from = "sestacruz@fibertel.com.ar";
+        private static string _from = "";
         private static string _fromName = $"TrashCleaner {Environment.MachineName}";
-        private static string _to = "sestacruz@gmail.com";
-        private static string _smtpUser = "sestacruz@fibertel.com.ar";
-        private static string _smtpPass = "falado01";
+        private static string _to = "";
+        private static string _smtpUser = "";
+        private static string _smtpPass = "";
         private static string _host = "smtp.fibertel.com.ar";
 
         public static void SendReport()
